@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">ProjetMobile</string>
+    <string name="edt1">Mon Site</string>
+    <string name="submit1">Connexion</string>
+    <string name="submit2">Inscription</string>
+    <string name="edt2">recherche</string>
+
 </resources>
+
