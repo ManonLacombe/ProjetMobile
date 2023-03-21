@@ -15,7 +15,7 @@
         android:background="?attr/colorPrimary"
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:popupTheme="@style/Theme.AppCompat.Light.NoActionBar" />
+        app:popupTheme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
 
     <TextView
         android:id="@+id/titre"
@@ -59,8 +59,8 @@
         android:hint="@string/edt2"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
-        android:background="@android:color/white"
-        android:textColor="@android:color/black"
+        android:background="@android:color/black"
+        android:textColor="@android:color/white"
         android:gravity="center"/>
 
 </RelativeLayout>
