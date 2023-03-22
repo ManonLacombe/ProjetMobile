@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" tools:context=".Inscription">
+    <item
+        android:id="@+id/connexion"  app:showAsAction="always|withText" android:title="@string/connexion"/>
+    <item
+        android:id="@+id/inscription"  app:showAsAction="always|withText" android:title="@string/inscription"/>
+</menu>
