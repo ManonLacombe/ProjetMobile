@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Connexion"
+    tools:context=".Inscription"
     android:orientation="vertical">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/my_toolbar2"
+        android:id="@+id/my_toolbar3"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
@@ -17,10 +17,10 @@
         app:popupTheme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
 
     <TextView
-        android:id="@+id/nomPageConnexion"
+        android:id="@+id/nomPageInscripton"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:text="@string/connexion"
+        android:text="@string/inscription"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="24dp"
         android:textSize="24sp"
