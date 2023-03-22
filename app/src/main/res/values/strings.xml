@@ -8,5 +8,6 @@
     <string name="inscription">Inscription</string>
     <string name="user">Utilisateur</string>
     <string name="mdp">Mot de passe</string>
+    <string name="valider">Valider</string>
 </resources>
 
