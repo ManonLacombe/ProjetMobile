@@ -2,6 +2,7 @@ package com.example.projetmobile;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -11,12 +12,14 @@ import androidx.appcompat.widget.Toolbar;
 
 public class MainActivity extends AppCompatActivity {
 
+    Intent IntentConnexion;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar myToolBar =(Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolBar);
+        IntentConnexion=new Intent(MainActivity.this,Connexion.class);
     }
 
     @Override
@@ -32,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         TextView txt;
         switch(item.getItemId()){
             case R.id.connexion:
-                //indications
+                startActivity(IntentConnexion);
                 return (true);
             case R.id.inscription:
                 //indications
