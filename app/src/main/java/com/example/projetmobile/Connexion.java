@@ -8,12 +8,17 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class Connexion extends AppCompatActivity {
 
     Intent IntentConnexion;
     Intent IntentInscription;
+    Intent mainActivityConnecter;
+    private EditText User, Mdp;
+    DBHandler db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +27,10 @@ public class Connexion extends AppCompatActivity {
         setSupportActionBar(myToolBar2);
         IntentConnexion=new Intent(Connexion.this,Connexion.class);
         IntentInscription=new Intent(Connexion.this, Inscription.class);
+        mainActivityConnecter=new Intent(Connexion.this,MainActivityConnecter.class);
+        db = new DBHandler(this);
+        User=(EditText) findViewById(R.id.User);
+        Mdp=(EditText) findViewById(R.id.Mdp);
     }
 
     @Override
@@ -43,5 +52,16 @@ public class Connexion extends AppCompatActivity {
                 return (true);
         }
         return true;
+    }
+
+    public void connexion(View view) {
+        //méthode appelée lors du clic sur le bouton valider
+        String userDonner=User.getText().toString();
+        String mdpDonner=Mdp.getText().toString();
+        CoupleId couple=new CoupleId(userDonner, mdpDonner);
+        if(couple==db.selectByUser(userDonner)){
+            startActivity(mainActivityConnecter);
+        }
+
     }
 }

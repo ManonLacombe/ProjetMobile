@@ -67,6 +67,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/validerCo"
         android:text="@string/valider"
+        android:onClick="connexion"
         />
 
 </LinearLayout>
