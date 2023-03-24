@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Connexion extends AppCompatActivity {
 
@@ -61,6 +62,9 @@ public class Connexion extends AppCompatActivity {
         CoupleId couple=new CoupleId(userDonner, mdpDonner);
         if(couple==db.selectByUser(userDonner)){
             startActivity(mainActivityConnecter);
+        }
+        else {
+            Toast.makeText(Connexion.this, "Identifiant ou mot de passe invalide", Toast.LENGTH_LONG).show();
         }
 
     }
