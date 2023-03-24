@@ -10,13 +10,14 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import androidx.appcompat.widget.Toolbar;
 
-public class MainActivity extends AppCompatActivity {
+public class page2_resultatBarreRecherche extends AppCompatActivity {
 
     Intent IntentConnexion;
     Intent IntentInscription;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+<<<<<<< HEAD:app/src/main/java/com/example/projetmobile/MainActivity.java
         setContentView(R.layout.activity_main);
         Toolbar myToolBar =(Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolBar);
@@ -43,5 +44,10 @@ public class MainActivity extends AppCompatActivity {
                 return (true);
         }
         return true;
+=======
+        setContentView(R.layout.activity_page2_resultat_barre_recherche);
+>>>>>>> layoutPage2:app/src/main/java/com/example/projetmobile/page2_resultatBarreRecherche.java
     }
+
+
 }

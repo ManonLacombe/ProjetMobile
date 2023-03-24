@@ -13,6 +13,10 @@
         android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"
         tools:targetApi="31">
         <activity
+            android:name=".page2_resultatBarreRecherche"
+            android:exported="false" />
+        <activity
+            android:name=".page3_descriptif_film_methode"
             android:name=".Inscription"
             android:exported="false" />
         <activity
