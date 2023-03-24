@@ -17,7 +17,7 @@ public class DBHandler extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String query =  "CREATE TABLE " + DBContract.Form.TABLE_NAME + " (" +
                 DBContract.Form._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-                DBContract.Form.COLUMN_USER + " TEXT," +
+                DBContract.Form.COLUMN_USER + " TEXT UNIQUE," +
                 DBContract.Form.COLUMN_PASSWORD + " TEXT)";
         db.execSQL(query);
     }
