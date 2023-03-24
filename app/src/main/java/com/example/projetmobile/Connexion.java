@@ -28,7 +28,7 @@ public class Connexion extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu){
         super.onCreateOptionsMenu(menu);
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.mymenu2, menu);
+        inflater.inflate(R.menu.mymenu, menu);
         return true;
     }
 

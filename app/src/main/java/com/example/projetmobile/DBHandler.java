@@ -37,5 +37,4 @@ public class DBHandler extends SQLiteOpenHelper {
         row.put(DBContract.Form.COLUMN_PASSWORD, password);
         long newRowId=db.insert(DBContract.Form.TABLE_NAME, null, row);
     }
-
 }

@@ -38,7 +38,7 @@ public class Inscription extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu){
         super.onCreateOptionsMenu(menu);
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.mymenu3, menu);
+        inflater.inflate(R.menu.mymenu, menu);
         return true;
     }
 
@@ -56,11 +56,11 @@ public class Inscription extends AppCompatActivity {
     }
 
     public void add(View view) {
-        //méthode appelée lors du clic sur le bouton ajouter
+        //méthode appelée lors du clic sur le bouton valider
         String user=User.getText().toString();
         String mdp=Mdp.getText().toString();
         db.insertSession(user, mdp);
-        // à placer dans le clic  Toast.makeText(Inscription.this, "Inscription Validé", Toast.LENGTH_LONG).show();
+        // à placer dans le clic:  Toast.makeText(Inscription.this, "Inscription Validé", Toast.LENGTH_LONG).show();
     }
 
     @Override
