@@ -17,6 +17,8 @@
             android:exported="false" />
         <activity
             android:name=".page3_descriptif_film_methode"
+            android:exported="false"/>
+        <activity
             android:name=".Inscription"
             android:exported="false" />
         <activity

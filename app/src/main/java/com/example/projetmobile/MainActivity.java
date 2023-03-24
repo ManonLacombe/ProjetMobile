@@ -10,7 +10,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import androidx.appcompat.widget.Toolbar;
 
-public class page2_resultatBarreRecherche extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
 
     Intent IntentConnexion;
     Intent IntentInscription;
@@ -20,8 +20,8 @@ public class page2_resultatBarreRecherche extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar myToolBar =(Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolBar);
-        IntentConnexion=new Intent(page2_resultatBarreRecherche.this,Connexion.class);
-        IntentInscription=new Intent(page2_resultatBarreRecherche.this,Inscription.class);
+        IntentConnexion=new Intent(MainActivity.this,Connexion.class);
+        IntentInscription=new Intent(MainActivity.this,Inscription.class);
     }
 
     @Override
@@ -44,6 +44,4 @@ public class page2_resultatBarreRecherche extends AppCompatActivity {
         }
         return true;
     }
-
-
 }

@@ -1,22 +1,16 @@
 <resources>
-<<<<<<< HEAD
     <string name="app_name">Films</string>
     <string name="edt1">Mon Site</string>
     <!--<string name="submit1">Connexion</string>-->
     <!--<string name="submit2">Inscription</string>-->
-    <string name="edt2">recherche</string>
+    <string name="recherche">recherche</string>
     <string name="connexion">Connexion</string>
     <string name="inscription">Inscription</string>
     <string name="user">Utilisateur</string>
     <string name="mdp">Mot de passe</string>
     <string name="valider">Valider</string>
-</resources>
-
-=======
-    <string name="app_name">ProjetMobile</string>
     <string name="titreFilm">Titre Film</string>
     <string name="descriptifFilm">Description Film</string>
-    <string name="recherche">recherche</string>
     <string name="search_button_text">Rechercher</string>
+
 </resources>
->>>>>>> layoutPage2
