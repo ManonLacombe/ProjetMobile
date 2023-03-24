@@ -17,8 +17,8 @@ public class MainActivityConnecter extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_connecter);
-        Toolbar myToolBar =(Toolbar) findViewById(R.id.my_toolbar4);
-        setSupportActionBar(myToolBar);
+        Toolbar myToolBar4 =(Toolbar) findViewById(R.id.my_toolbar4);
+        setSupportActionBar(myToolBar4);
         IntentConnexion=new Intent(MainActivityConnecter.this,Connexion.class);
         IntentInscription=new Intent(MainActivityConnecter.this,Inscription.class);
     }
@@ -40,5 +40,4 @@ public class MainActivityConnecter extends AppCompatActivity {
         }
         return true;
     }
-}
 }

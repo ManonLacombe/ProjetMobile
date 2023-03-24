@@ -27,30 +27,6 @@
     android:layout_marginTop="24dp"
     android:textSize="24sp" />
 
-<!-- Bouton connexion -->
-<!--
-<Button
-    android:id="@+id/btn_connexion"
-    android:text="@string/submit1"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_alignParentEnd="true"
-    android:layout_below="@id/my_toolbar"
-    android:layout_marginTop="24dp"
-    android:layout_marginEnd="24dp" />
- -->
-<!-- Bouton inscription -->
-<!--
-<Button
-    android:id="@+id/btn_inscription"
-    android:text="@string/submit2"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_alignParentEnd="true"
-    android:layout_below="@id/btn_connexion"
-    android:layout_marginTop="24dp"
-    android:layout_marginEnd="24dp" />
--->
 <EditText
     android:id="@+id/searchView"
     android:layout_width="match_parent"
