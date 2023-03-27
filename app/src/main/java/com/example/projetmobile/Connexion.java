@@ -66,7 +66,7 @@ public class Connexion extends AppCompatActivity {
             String userDonner = User.getText().toString();
             String mdpDonner = Mdp.getText().toString();
             CoupleId couple = new CoupleId(userDonner, mdpDonner);
-            if (couple == db.selectByUser(userDonner, mdpDonner)) {
+            if ((db.selectByUser(userDonner,mdpDonner)).size()>0) {
                 startActivity(mainActivityConnecter);
             } else {
                 Toast.makeText(Connexion.this, "Identifiant ou mot de passe invalide", Toast.LENGTH_LONG).show();

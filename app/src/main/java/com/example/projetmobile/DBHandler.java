@@ -49,7 +49,7 @@ public class DBHandler extends SQLiteOpenHelper {
                 DBContract.Form.COLUMN_USER,
                 DBContract.Form.COLUMN_PASSWORD
         };
-        String selection = DBContract.Form.COLUMN_USER+" LIKE ? AND"+
+        String selection = DBContract.Form.COLUMN_USER+" LIKE ? AND "+
                 DBContract.Form.COLUMN_PASSWORD+ " LIKE ?" ;
         String [] selectionArgs = {userDonner, mdpDonner};
         Cursor cursor=db.query(
