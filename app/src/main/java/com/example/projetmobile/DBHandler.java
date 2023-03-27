@@ -43,17 +43,19 @@ public class DBHandler extends SQLiteOpenHelper {
         long newRowId=db.insert(DBContract.Form.TABLE_NAME, null, row);
     }
 
-    public List<CoupleId> selectByUser(String userDonner) {
+    public List<CoupleId> selectByUser(String userDonner, String mdpDonner) {
         SQLiteDatabase db = this.getReadableDatabase();
         String [] projection = {
                 DBContract.Form.COLUMN_USER,
                 DBContract.Form.COLUMN_PASSWORD
         };
-        String [] selectionArgs = {userDonner};
+        String selection = DBContract.Form.COLUMN_USER+" LIKE ? AND"+
+                DBContract.Form.COLUMN_PASSWORD+ " LIKE ?" ;
+        String [] selectionArgs = {userDonner, mdpDonner};
         Cursor cursor=db.query(
                 DBContract.Form.TABLE_NAME,
                 projection,
-                null,
+                selection,
                 selectionArgs,
                 null,
                 null,
