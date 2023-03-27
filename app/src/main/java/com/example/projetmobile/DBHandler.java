@@ -1,9 +1,14 @@
 package com.example.projetmobile;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class DBHandler extends SQLiteOpenHelper {
     public static final int DATABASE_VERSION = 1;
@@ -36,5 +41,34 @@ public class DBHandler extends SQLiteOpenHelper {
         row.put(DBContract.Form.COLUMN_USER, user);
         row.put(DBContract.Form.COLUMN_PASSWORD, password);
         long newRowId=db.insert(DBContract.Form.TABLE_NAME, null, row);
+    }
+
+    public List<CoupleId> selectByUser(String userDonner, String mdpDonner) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String [] projection = {
+                DBContract.Form.COLUMN_USER,
+                DBContract.Form.COLUMN_PASSWORD
+        };
+        String selection = DBContract.Form.COLUMN_USER+" LIKE ? AND "+
+                DBContract.Form.COLUMN_PASSWORD+ " LIKE ?" ;
+        String [] selectionArgs = {userDonner, mdpDonner};
+        Cursor cursor=db.query(
+                DBContract.Form.TABLE_NAME,
+                projection,
+                selection,
+                selectionArgs,
+                null,
+                null,
+                null
+        );
+        List<CoupleId> couples = new ArrayList<>();
+        while(cursor.moveToNext()){
+            @SuppressLint("Range") String user=cursor.getString(cursor.getColumnIndex(DBContract.Form.COLUMN_USER));
+            @SuppressLint("Range") String password=cursor.getString(cursor.getColumnIndex(DBContract.Form.COLUMN_PASSWORD));
+            CoupleId tmp=new CoupleId(user, password);
+            couples.add(tmp);
+        }
+        cursor.close();
+        return couples;
     }
 }

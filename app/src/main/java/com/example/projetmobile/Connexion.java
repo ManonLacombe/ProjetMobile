@@ -8,12 +8,20 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Connexion extends AppCompatActivity {
 
     Intent IntentConnexion;
     Intent IntentInscription;
+    Intent mainActivityConnecter;
+    private EditText User, Mdp;
+    private Button validerCo;
+    DBHandler db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +30,10 @@ public class Connexion extends AppCompatActivity {
         setSupportActionBar(myToolBar2);
         IntentConnexion=new Intent(Connexion.this,Connexion.class);
         IntentInscription=new Intent(Connexion.this, Inscription.class);
+        mainActivityConnecter=new Intent(Connexion.this,MainActivityConnecter.class);
+        db = new DBHandler(this);
+        User=(EditText) findViewById(R.id.User);
+        Mdp=(EditText) findViewById(R.id.Mdp);
     }
 
     @Override
@@ -43,5 +55,24 @@ public class Connexion extends AppCompatActivity {
                 return (true);
         }
         return true;
+    }
+
+    public void connexion(View view) {
+        //méthode appelée lors du clic sur le bouton valider
+        if(view.getId()==R.id.validerCo) {
+            //EditText userDonner =findViewById(R.id.User);
+            //EditText passwordDonner =findViewById(R.id.Mdp);
+
+            String userDonner = User.getText().toString();
+            String mdpDonner = Mdp.getText().toString();
+            CoupleId couple = new CoupleId(userDonner, mdpDonner);
+            if ((db.selectByUser(userDonner,mdpDonner)).size()>0) {
+                startActivity(mainActivityConnecter);
+            } else {
+                Toast.makeText(Connexion.this, "Identifiant ou mot de passe invalide", Toast.LENGTH_LONG).show();
+            }
+
+        }
+
     }
 }

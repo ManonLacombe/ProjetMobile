@@ -12,5 +12,6 @@
     <string name="titreFilm">Titre Film</string>
     <string name="descriptifFilm">Description Film</string>
     <string name="search_button_text">Rechercher</string>
+    <string name="deconnexion">Déconnexion</string>
 
 </resources>
