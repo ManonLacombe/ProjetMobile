@@ -12,6 +12,7 @@
     <string name="titreFilm">Titre Film</string>
     <string name="search_button_text">search Button</string>
     <string name="search_hint">RechercherTtitre</string>
+    <string name="descriptifFilm">"Description film : "</string>
 
 
 </resources>
