@@ -4,39 +4,53 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivityConnecter"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".MainActivityConnecter">
 
-<androidx.appcompat.widget.Toolbar
-    android:layout_alignParentRight="true"
-    android:id="@+id/my_toolbar4"
-    android:layout_width="match_parent"
-    android:layout_height="?attr/actionBarSize"
-    android:background="?attr/colorPrimary"
-    android:elevation="4dp"
-    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-    app:popupTheme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/my_toolbar4"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentRight="true"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
 
-<TextView
-    android:id="@+id/titre"
-    android:text="@string/edt1"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_centerHorizontal="true"
-    android:layout_below="@id/my_toolbar4"
-    android:layout_marginTop="24dp"
-    android:textSize="24sp" />
+    <TextView
+        android:id="@+id/titre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/my_toolbar4"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"
+        android:text="@string/edt1"
+        android:textSize="24sp" />
 
-<EditText
-    android:id="@+id/searchView"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_below="@id/titre"
-    android:hint="@string/recherche"
-    android:layout_marginTop="16dp"
-    android:layout_marginBottom="16dp"
-    android:background="@android:color/black"
-    android:textColor="@android:color/white"
-    android:gravity="center"/>
+    <EditText
+        android:id="@+id/searchView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/titre"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@android:color/black"
+        android:gravity="center"
+        android:hint="@string/recherche"
+        android:textColor="@android:color/white" />
+
+    <TextView
+        android:id="@+id/invitationCinema"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/searchView"
+        android:text="@string/voir" />
+
+    <WebView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/voir"
+        android:id="@+id/web"
+        android:layout_below="@id/invitationCinema" />
 
 </RelativeLayout>
