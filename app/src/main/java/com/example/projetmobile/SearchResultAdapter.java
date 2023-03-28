@@ -1,5 +1,8 @@
 package com.example.projetmobile;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,14 +12,23 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 
 public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapter.SearchResultViewHolder> {
 
-    private ArrayList<Movie> ListMovie;
+    private List<Movie> ListMovie;
+
+    public SearchResultAdapter (List<Movie> data) {
+        ListMovie = data;
+    }
+
     public static class SearchResultViewHolder extends RecyclerView.ViewHolder {
-       private final ImageView posterURL;
-       private final TextView title;
+        private final ImageView posterURL;
+        private final TextView title;
 
         /**
          * méthode qui permettra de faire le lien entre les données
@@ -51,14 +63,15 @@ public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapte
     }
 
     /*
-    * méthode qui permet de faire le lien entre vues et données
-    */
+     * méthode qui permet de faire le lien entre vues et données
+     */
     @Override
     public void onBindViewHolder(@NonNull SearchResultAdapter.SearchResultViewHolder holder, int position) {
+
+        new ChargementImage(ListMovie.get(position).getPosterUrl(),((SearchResultViewHolder)
+                holder).getImageViewPosterURL() ).execute();
         ((SearchResultViewHolder)
                 holder).getTextViewTitle().setText(ListMovie.get(position).getTitle());
-        ((SearchResultViewHolder)
-                holder).getImageViewPosterURL().setImage(ListMovie.get(position).getPosterURL());
     }
 
     /**
@@ -71,6 +84,40 @@ public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapte
         return ListMovie.size();
     }
 
+    public class ChargementImage extends AsyncTask<Void, Void, Bitmap> {
+
+        private String url;
+        private ImageView imageView;
+
+        public ChargementImage(String url, ImageView imageView) {
+            this.url = url;
+            this.imageView = imageView;
+        }
+
+        @Override
+        protected Bitmap doInBackground(Void... params) {
+            try {
+                URL urlConnection = new URL(url);
+                HttpURLConnection connection = (HttpURLConnection) urlConnection
+                        .openConnection();
+                connection.setDoInput(true);
+                connection.connect();
+                InputStream input = connection.getInputStream();
+                Bitmap myBitmap = BitmapFactory.decodeStream(input);
+                return myBitmap;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Bitmap result) {
+            super.onPostExecute(result);
+            imageView.setImageBitmap(result);
+        }
+
+    }
 
 }
 
