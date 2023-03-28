@@ -4,15 +4,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 public class MainActivityConnecter extends AppCompatActivity {
 
     Intent IntentConnexion;
     Intent IntentInscription;
+    private WebView web;
+    MyReceiver myReceiver;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,6 +26,11 @@ public class MainActivityConnecter extends AppCompatActivity {
         setSupportActionBar(myToolBar4);
         IntentConnexion=new Intent(MainActivityConnecter.this,Connexion.class);
         IntentInscription=new Intent(MainActivityConnecter.this,Inscription.class);
+        myReceiver=new MyReceiver();
+        web=(WebView) findViewById(R.id.web);
+        web.getSettings().setJavaScriptEnabled(true);
+        web.loadUrl("https://www.cgrcinemas.fr/films-a-l-affiche#");
+        web.setWebViewClient(new WebViewClient());
     }
 
     @Override
@@ -39,5 +49,27 @@ public class MainActivityConnecter extends AppCompatActivity {
                 return (true);
         }
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (web.canGoBack()) {
+            web.goBack();
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    @Override
+    public void onStart(){
+        super.onStart();
+        IntentFilter filter = new IntentFilter(Intent.ACTION_AIRPLANE_MODE_CHANGED);
+        registerReceiver(myReceiver, filter);
+    }
+
+    @Override
+    public void onStop(){
+        super.onStop();
+        unregisterReceiver(myReceiver);
     }
 }
