@@ -11,7 +11,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 /**
- * Définis les méthodes pour se connecter en tant qu'utilisateur
+ * Defines methods for logging in as a user
  */
 public class Connexion extends AppCompatActivity {
 
@@ -19,14 +19,11 @@ public class Connexion extends AppCompatActivity {
     Intent IntentInscription;
 
     /**
-     * Cette méthode est appelée lors de la
-     * création de l’activité. Elle
-     * permet de faire le lien entre données et
-     * affichages. Elle instancie tous les
-     * objets et variables nécéssaires au
-     * fonctionnement de l’activité.
+     * This method is called when the activity is created. It makes the link
+     * between data and display. It instantiates all the objects and variables
+     * necessary for the running of the activity.
      *
-     * @param savedInstanceState
+     * @param savedInstanceState Refers to the saving of the state of the instance
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,10 +36,9 @@ public class Connexion extends AppCompatActivity {
     }
 
     /**
-     * Cette méthode fait le lien avec le layout
-     * utilisé pour le menu
-     * @param menu
-     * @return true si le lien avec le menu s'est bien fait
+     * This method makes the link with the layout used for the menu
+     * @param menu Specifies the menu file to be considered
+     * @return True if the link with the menu is well established
      */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -53,10 +49,9 @@ public class Connexion extends AppCompatActivity {
     }
 
     /**
-     * cette méthode permet de rediriger vers une
-     * autre page selon l'item sélectionnée
-     * @param item est l'item du menu
-     * @return vrai si la redirection vers la page sélectionnée se passe bien
+     * This method allows redirecting to another page depending on the selected item
+     * @param item is the menu item
+     * @return True if the redirection to the selected page was successful
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

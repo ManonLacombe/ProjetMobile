@@ -1,12 +1,12 @@
 package com.example.projetmobile;
 
 /**
- * cette classe définit la construction de la base de donnée
+ * This class defines the construction of the database
  */
 public class DBContract {
 
     /**
-     * cette méthode définit le nom de la table et ses colonnes
+     * This method defines the name of the table and its columns
      */
     public static class Form{
         public static final String TABLE_NAME="session";
