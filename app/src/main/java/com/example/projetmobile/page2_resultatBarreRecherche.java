@@ -145,15 +145,15 @@ public class page2_resultatBarreRecherche extends AppCompatActivity {
 
         private ArrayList<Movie> decodeJSON(JSONObject jso) throws Exception{
             ArrayList<Movie> response = new ArrayList<>();
-            int jsocod = jso.getInt("response_code");
+            int jsocod = jso.getInt("ok");
             if (jsocod == 0) {
-                JSONArray jsorecherche = jso.getJSONArray("results");
+                JSONArray jsorecherche = jso.getJSONArray("description");
                 for (int i = 0; i < jsorecherche.length(); i++){
-                    Spanned title , posterUrl ;
-                    title = (Html.fromHtml(jsorecherche.getJSONObject(i).getString("recherche"), Html.FROM_HTML_MODE_LEGACY));
-                    posterUrl = (Html.fromHtml(jsorecherche.getJSONObject(i).getString("reponse_Recherche"), Html.FROM_HTML_MODE_LEGACY));
-                    Movie movie1 = new Movie(title.toString(),posterUrl.toString());
-                    response.add(movie1);
+                    Spanned title , posterUrl;
+                    title = (Html.fromHtml(jsorecherche.getJSONObject(i).getString("TITLE"), Html.FROM_HTML_MODE_LEGACY));
+                    posterUrl = (Html.fromHtml(jsorecherche.getJSONObject(i).getString("IMG_POSTER"), Html.FROM_HTML_MODE_LEGACY));
+                    Movie movie = new Movie(title.toString(),posterUrl.toString());
+                    response.add(movie);
                 }
             } else {
                 Log.e("ERROR","\n Code erreur retourné par le serveur : \n\n \t Code = " + jsocod + "\n\n \t Message : " + jso.getString("message"));
