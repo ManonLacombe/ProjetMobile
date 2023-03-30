@@ -2,6 +2,7 @@ package com.example.projetmobile;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
@@ -13,6 +14,9 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.appcompat.widget.Toolbar;
@@ -51,12 +55,12 @@ public class page2_resultatBarreRecherche extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        /*
         Toolbar myToolBar =(Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolBar);
         IntentConnexion=new Intent(page2_resultatBarreRecherche.this,Connexion.class);
         IntentInscription=new Intent(page2_resultatBarreRecherche.this,Inscription.class);
-
+        */
         setContentView(R.layout.activity_page2_resultat_barre_recherche);
         finalResponse = new ArrayList<Movie>();
         Intent in = getIntent();
@@ -64,8 +68,16 @@ public class page2_resultatBarreRecherche extends AppCompatActivity {
         RequestTask rt = new RequestTask();
         rt.execute(Recherche);
 
-    }
+        // Création de l'instance du RecyclerView
+        RecyclerView searchResultRecyclerView = findViewById(R.id.search_result_recycler_view);
+        // Création de l'instance de SearchResultAdapter en passant les données
+        SearchResultAdapter searchResultAdapter = new SearchResultAdapter(finalResponse);
 
+        // Assignation de l'instance de SearchResultAdapter au RecyclerView
+        searchResultRecyclerView.setAdapter(searchResultAdapter);
+
+    }
+/*
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         super.onCreateOptionsMenu(menu);
@@ -86,7 +98,7 @@ public class page2_resultatBarreRecherche extends AppCompatActivity {
         }
         return true;
     }
-
+*/
     /*
      * La classe interne asynchrone permet la réalisation de la requête HTTP et le traitement des donénes reçues
      * Prend en entrée un String qui est le titre de la recherche à générer.
