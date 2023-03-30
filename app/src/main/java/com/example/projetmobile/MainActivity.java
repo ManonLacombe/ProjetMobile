@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
     Intent IntentConnexion;
     Intent IntentInscription;
+    Intent intent;
 
     private EditText searchEditText;
     private Button searchButton;
@@ -33,17 +34,16 @@ public class MainActivity extends AppCompatActivity {
 
         searchEditText = findViewById(R.id.searchView);
         searchButton = findViewById(R.id.search_button);
-        searchButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Code à exécuter lors du clic sur le bouton de recherche
-                String searchTitle = searchEditText.getText().toString();
-                Intent intent = new Intent(MainActivity.this, page2_resultatBarreRecherche.class);
-                intent.putExtra("searchTitle", searchTitle);
-                startActivity(intent);
-            }
-        });
 
+        intent=new Intent(MainActivity.this, page2_resultatBarreRecherche.class);
+    }
+
+
+    public void onClick(View v) {
+        // Code à exécuter lors du clic sur le bouton de recherche
+        String searchTitle = searchEditText.getText().toString();
+        intent.putExtra("searchTitle", searchTitle);
+        startActivity(intent);
     }
 
     @Override

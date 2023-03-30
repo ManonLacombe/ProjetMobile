@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".page2_resultatBarreRecherche"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:id="@+id/layoutPage2Recherche">
 
     <!-- Barre de recherche -->
     <LinearLayout
