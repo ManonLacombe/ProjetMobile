@@ -60,7 +60,7 @@ public class page2_resultatBarreRecherche extends AppCompatActivity {
         setContentView(R.layout.activity_page2_resultat_barre_recherche);
         finalResponse = new ArrayList<Movie>();
         Intent in = getIntent();
-        String Recherche = in.getStringExtra("Movie");
+        String Recherche = String.valueOf(in.getStringExtra("Movie"));
         RequestTask rt = new RequestTask();
         rt.execute(Recherche);
 
