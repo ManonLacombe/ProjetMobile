@@ -44,7 +44,9 @@ public class page2_resultatBarreRecherche extends AppCompatActivity {
     Intent IntentConnexion;
     Intent IntentInscription;
     private Button retourPagePrincipale;
+    private Button detailsBtn;
     Intent IntentRetour;
+    Intent IntentInfo;
     private TextView title;
 
     private RecyclerView searchResultRecyclerView;
@@ -83,6 +85,7 @@ public class page2_resultatBarreRecherche extends AppCompatActivity {
 
         title=(TextView) findViewById(R.id.SearchResult);
         IntentRetour=new Intent(page2_resultatBarreRecherche.this, MainActivity.class);
+        IntentInfo=new Intent(page2_resultatBarreRecherche.this, page3_descriptif_film_methode.class);
 
     }
 
@@ -110,6 +113,12 @@ public class page2_resultatBarreRecherche extends AppCompatActivity {
     public void retour(View v) {
         if(v.getId()==R.id.retourPagePrincipale){
             startActivity(IntentRetour);
+        }
+    }
+
+    public void details(View v) {
+        if(v.getId()==R.id.detailsBtn){
+            startActivity(IntentInfo);
         }
     }
 
@@ -175,10 +184,12 @@ public class page2_resultatBarreRecherche extends AppCompatActivity {
             if (jsocod.equals("true")) {
                 JSONArray jsorecherche = jso.getJSONArray("description");
                 for (int i = 0; i < jsorecherche.length(); i++){
-                    Spanned title , posterUrl;
+                    Spanned title , posterUrl, actors, years;
                     title = (Html.fromHtml(jsorecherche.getJSONObject(i).getString("#TITLE"), Html.FROM_HTML_MODE_LEGACY));
                     posterUrl = (Html.fromHtml(jsorecherche.getJSONObject(i).getString("#IMG_POSTER"), Html.FROM_HTML_MODE_LEGACY));
-                    Movie movie = new Movie(title.toString(),posterUrl.toString());
+                    actors = (Html.fromHtml(jsorecherche.getJSONObject(i).getString("#ACTORS"), Html.FROM_HTML_MODE_LEGACY));
+                    years = (Html.fromHtml(jsorecherche.getJSONObject(i).getString("#YEARS"), Html.FROM_HTML_MODE_LEGACY));
+                    Movie movie = new Movie(title.toString(),posterUrl.toString(), actors.toString(), years.toString());
                     response.add(movie);
                 }
             } else {
