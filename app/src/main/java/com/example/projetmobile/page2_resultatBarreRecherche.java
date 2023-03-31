@@ -55,12 +55,12 @@ public class page2_resultatBarreRecherche extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_page2_resultat_barre_recherche);
         Toolbar myToolBar5 =(Toolbar) findViewById(R.id.my_toolbar5);
         setSupportActionBar(myToolBar5);
         IntentConnexion=new Intent(page2_resultatBarreRecherche.this,Connexion.class);
         IntentInscription=new Intent(page2_resultatBarreRecherche.this,Inscription.class);
-        */
-        setContentView(R.layout.activity_page2_resultat_barre_recherche);
+
         finalResponse = new ArrayList<Movie>();
         Intent in = getIntent();
         String Recherche = String.valueOf(in.getStringExtra("search_edit_text"));
