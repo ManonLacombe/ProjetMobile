@@ -64,7 +64,7 @@ public class page2_resultatBarreRecherche extends AppCompatActivity {
         setContentView(R.layout.activity_page2_resultat_barre_recherche);
         finalResponse = new ArrayList<Movie>();
         Intent in = getIntent();
-        String Recherche = String.valueOf(in.getStringExtra("SearchTitle"));
+        String Recherche = String.valueOf(in.getStringExtra("search_edit_text"));
         RequestTask rt = new RequestTask();
         rt.execute(Recherche);
 

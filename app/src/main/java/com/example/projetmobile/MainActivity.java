@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
     public void onClick(View v) {
         // Code à exécuter lors du clic sur le bouton de recherche
         String searchTitle = searchEditText.getText().toString();
-        intent.putExtra("searchTitle", searchTitle);
+        intent.putExtra("search_edit_text", searchTitle);
         startActivity(intent);
     }
 
