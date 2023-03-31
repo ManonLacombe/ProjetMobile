@@ -64,7 +64,7 @@ public class page2_resultatBarreRecherche extends AppCompatActivity {
         setContentView(R.layout.activity_page2_resultat_barre_recherche);
         finalResponse = new ArrayList<Movie>();
         Intent in = getIntent();
-        String Recherche = String.valueOf(in.getStringExtra("Movie"));
+        String Recherche = String.valueOf(in.getStringExtra("SearchTitle"));
         RequestTask rt = new RequestTask();
         rt.execute(Recherche);
 
@@ -157,13 +157,13 @@ public class page2_resultatBarreRecherche extends AppCompatActivity {
 
         private ArrayList<Movie> decodeJSON(JSONObject jso) throws Exception{
             ArrayList<Movie> response = new ArrayList<>();
-            int jsocod = jso.getInt("ok");
-            if (jsocod == 0) {
+            String jsocod = jso.getString("ok");
+            if (jsocod.equals("true")) {
                 JSONArray jsorecherche = jso.getJSONArray("description");
                 for (int i = 0; i < jsorecherche.length(); i++){
                     Spanned title , posterUrl;
-                    title = (Html.fromHtml(jsorecherche.getJSONObject(i).getString("TITLE"), Html.FROM_HTML_MODE_LEGACY));
-                    posterUrl = (Html.fromHtml(jsorecherche.getJSONObject(i).getString("IMG_POSTER"), Html.FROM_HTML_MODE_LEGACY));
+                    title = (Html.fromHtml(jsorecherche.getJSONObject(i).getString("#TITLE"), Html.FROM_HTML_MODE_LEGACY));
+                    posterUrl = (Html.fromHtml(jsorecherche.getJSONObject(i).getString("#IMG_POSTER"), Html.FROM_HTML_MODE_LEGACY));
                     Movie movie = new Movie(title.toString(),posterUrl.toString());
                     response.add(movie);
                 }
