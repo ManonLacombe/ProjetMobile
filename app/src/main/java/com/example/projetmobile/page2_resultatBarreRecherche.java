@@ -55,9 +55,8 @@ public class page2_resultatBarreRecherche extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        /*
-        Toolbar myToolBar =(Toolbar) findViewById(R.id.my_toolbar);
-        setSupportActionBar(myToolBar);
+        Toolbar myToolBar5 =(Toolbar) findViewById(R.id.my_toolbar5);
+        setSupportActionBar(myToolBar5);
         IntentConnexion=new Intent(page2_resultatBarreRecherche.this,Connexion.class);
         IntentInscription=new Intent(page2_resultatBarreRecherche.this,Inscription.class);
         */
