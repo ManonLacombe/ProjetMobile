@@ -60,7 +60,7 @@ public class Inscription extends AppCompatActivity {
         String user=User.getText().toString();
         String mdp=Mdp.getText().toString();
         db.insertSession(user, mdp);
-        // à placer dans le clic:  Toast.makeText(Inscription.this, "Inscription Validé", Toast.LENGTH_LONG).show();
+        // mettre une condition:  Toast.makeText(Inscription.this, "Inscription Validé", Toast.LENGTH_LONG).show();
     }
 
     @Override
