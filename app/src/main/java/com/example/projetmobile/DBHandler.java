@@ -10,14 +10,25 @@ import android.database.sqlite.SQLiteOpenHelper;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class defines the methods related to the database
+ */
 public class DBHandler extends SQLiteOpenHelper {
     public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "Form.db";
 
+    /**
+     * Constructor for DBHandler class
+     * @param context is 
+     */
     public DBHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
+    /**
+     * cette méthode permet de créer la base de données
+     * @param db indique la base de donnée à prendre en compte
+     */
     @Override
     public void onCreate(SQLiteDatabase db) {
         String query =  "CREATE TABLE " + DBContract.Form.TABLE_NAME + " (" +
@@ -27,6 +38,12 @@ public class DBHandler extends SQLiteOpenHelper {
         db.execSQL(query);
     }
 
+    /**
+     * cette méthode permet de supprimer une table si elle existe
+     * @param db indique la base de données à prendre en compte
+     * @param oldVersion indique l'ancienne version de la base de données
+     * @param newVersion indique la nouvelle version de la base de données
+     */
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         String query = "DROP TABLE IF EXISTS " + DBContract.Form.TABLE_NAME;
@@ -34,6 +51,11 @@ public class DBHandler extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    /**
+     * cette méthode permet de créer une ligne et de l'insérer
+     * @param user indique le nom d'utilisateur
+     * @param password indique le mot de passe
+     */
     public void insertSession(String user, String password){
         SQLiteDatabase db = this.getWritableDatabase();
         // insertion create a row and insert it
