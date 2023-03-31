@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     Intent IntentInscription;
 
     private Button Rechercher;
+    private EditText nom;
     Intent IntentListe;
 
     @Override
@@ -30,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
         IntentConnexion=new Intent(MainActivity.this,Connexion.class);
         IntentInscription=new Intent(MainActivity.this,Inscription.class);
         IntentListe = new Intent(MainActivity.this, page2_resultatBarreRecherche.class);
+        Rechercher=findViewById(R.id.search_button);
+        nom=findViewById(R.id.searchView);
     }
 
     @Override

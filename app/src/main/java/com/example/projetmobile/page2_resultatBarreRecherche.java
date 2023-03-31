@@ -39,8 +39,8 @@ public class page2_resultatBarreRecherche extends AppCompatActivity {
 
     Intent IntentConnexion;
     Intent IntentInscription;
-
     ArrayList<Movie> finalResponse;
+    //RecyclerView ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
