@@ -27,18 +27,19 @@
         android:orientation="horizontal"
         android:padding="16dp">
 
-        <EditText
-            android:id="@+id/search_edit_text"
+        <TextView
+            android:id="@+id/SearchResult"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="@string/search_hint" />
+            android:text="@string/titreFilm" />
 
         <Button
-            android:id="@+id/search_button"
+            android:id="@+id/retourPagePrincipale"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/search_button_text" />
+            android:text="@string/pagePrincipale"
+            android:onClick="retour"/>
 
     </LinearLayout>
 

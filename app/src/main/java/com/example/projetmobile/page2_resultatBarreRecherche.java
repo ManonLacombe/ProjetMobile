@@ -15,6 +15,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -42,6 +43,9 @@ public class page2_resultatBarreRecherche extends AppCompatActivity {
 
     Intent IntentConnexion;
     Intent IntentInscription;
+    private Button retourPagePrincipale;
+    Intent IntentRetour;
+    private TextView title;
 
     private RecyclerView searchResultRecyclerView;
     private SearchResultAdapter searchResultAdapter;
@@ -64,6 +68,8 @@ public class page2_resultatBarreRecherche extends AppCompatActivity {
         finalResponse = new ArrayList<Movie>();
         Intent in = getIntent();
         String Recherche = String.valueOf(in.getStringExtra("search_edit_text"));
+        TextView t=findViewById(R.id.SearchResult);
+        t.setText(Recherche);
         RequestTask rt = new RequestTask();
         rt.execute(Recherche);
 
@@ -75,8 +81,11 @@ public class page2_resultatBarreRecherche extends AppCompatActivity {
         // Assignation de l'instance de SearchResultAdapter au RecyclerView
         searchResultRecyclerView.setAdapter(searchResultAdapter);
 
+        title=(TextView) findViewById(R.id.SearchResult);
+        IntentRetour=new Intent(page2_resultatBarreRecherche.this, MainActivity.class);
+
     }
-/*
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         super.onCreateOptionsMenu(menu);
@@ -97,7 +106,13 @@ public class page2_resultatBarreRecherche extends AppCompatActivity {
         }
         return true;
     }
-*/
+
+    public void retour(View v) {
+        if(v.getId()==R.id.retourPagePrincipale){
+            startActivity(IntentRetour);
+        }
+    }
+
     /*
      * La classe interne asynchrone permet la réalisation de la requête HTTP et le traitement des donénes reçues
      * Prend en entrée un String qui est le titre de la recherche à générer.
