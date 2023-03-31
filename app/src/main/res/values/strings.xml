@@ -10,9 +10,11 @@
     <string name="mdp">Mot de passe</string>
     <string name="valider">Valider</string>
     <string name="titreFilm">Titre Film</string>
-    <string name="descriptifFilm">Description Film</string>
-    <string name="search_button_text">Rechercher</string>
     <string name="deconnexion">Déconnexion</string>
     <string name="voir">"Films au cinéma en ce moment : "</string>
+    <string name="search_button_text">Rechercher</string>
+    <string name="descriptifFilm">"Description film : "</string>
+    <string name="search_hint">RechercherTtitre</string>
+
 
 </resources>

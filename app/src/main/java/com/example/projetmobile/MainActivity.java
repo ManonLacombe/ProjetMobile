@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import androidx.appcompat.widget.Toolbar;
 
@@ -14,6 +17,12 @@ public class MainActivity extends AppCompatActivity {
 
     Intent IntentConnexion;
     Intent IntentInscription;
+    Intent intent;
+
+    private EditText searchEditText;
+    private Button searchButton;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +31,19 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(myToolBar);
         IntentConnexion=new Intent(MainActivity.this,Connexion.class);
         IntentInscription=new Intent(MainActivity.this,Inscription.class);
+
+        searchEditText = findViewById(R.id.searchView);
+        searchButton = findViewById(R.id.search_button);
+
+        intent=new Intent(MainActivity.this, page2_resultatBarreRecherche.class);
+    }
+
+
+    public void onClick(View v) {
+        // Code à exécuter lors du clic sur le bouton de recherche
+        String searchTitle = searchEditText.getText().toString();
+        intent.putExtra("search_edit_text", searchTitle);
+        startActivity(intent);
     }
 
     @Override
