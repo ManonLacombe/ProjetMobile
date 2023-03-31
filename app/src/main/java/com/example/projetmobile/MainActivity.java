@@ -18,10 +18,8 @@ public class MainActivity extends AppCompatActivity {
     Intent IntentConnexion;
     Intent IntentInscription;
     Intent intent;
-
     private EditText searchEditText;
     private Button searchButton;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
