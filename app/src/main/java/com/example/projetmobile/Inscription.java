@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteConstraintException;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -87,17 +89,33 @@ public class Inscription extends AppCompatActivity {
         //méthode appelée lors du clic sur le bouton valider
         String user=User.getText().toString();
         String mdp=Mdp.getText().toString();
-        db.insertSession(user, mdp);
         if (user.isEmpty() || mdp.isEmpty()){
             Toast.makeText(Inscription.this, "Identifiant ou mot de passe invalide", Toast.LENGTH_LONG).show();
         }
-        else{
-            db.insertSession(user, mdp);
-        }
-        if (!user.isEmpty() && !mdp.isEmpty() && (db.selectByUser(user, mdp)).size() > 0) {
-            startActivity(IntentConnexion);
+        else {
+            try {
+                db.insertSession(user, mdp);
+                if (!user.isEmpty() && !mdp.isEmpty() && (db.selectByUser(user, mdp)).size() > 0) {
+                    startActivity(IntentConnexion);
+                }
+            } catch (SQLiteConstraintException e) {
+                Log.e("ERROR", "Cet utilisateur existe déjà");
+                // Capture de l'exception SQLiteConstraintException
+                //Toast.makeText(Inscription.this, "Cet utilisateur existe déjà.", Toast.LENGTH_LONG).show();
+            }
         }
     }
+
+    /*private boolean checkUserExists(String user, String password) {
+        boolean exists = false;
+        if (!user.isEmpty() && !password.isEmpty()) {
+            String hashedPassword = db.getHashedPassword(password);
+            if (db.selectByUser(user, hashedPassword).size() > 0) {
+                exists = true;
+            }
+        }
+        return exists;
+    }*/
 
     @Override
     protected void onDestroy() {
