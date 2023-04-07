@@ -88,7 +88,15 @@ public class Inscription extends AppCompatActivity {
         String user=User.getText().toString();
         String mdp=Mdp.getText().toString();
         db.insertSession(user, mdp);
-        // mettre une condition:  Toast.makeText(Inscription.this, "Inscription Validé", Toast.LENGTH_LONG).show();
+        if (user.isEmpty() || mdp.isEmpty()){
+            Toast.makeText(Inscription.this, "Identifiant ou mot de passe invalide", Toast.LENGTH_LONG).show();
+        }
+        else{
+            db.insertSession(user, mdp);
+        }
+        if (!user.isEmpty() && !mdp.isEmpty() && (db.selectByUser(user, mdp)).size() > 0) {
+            startActivity(IntentConnexion);
+        }
     }
 
     @Override
