@@ -39,11 +39,21 @@
         android:hint="@string/recherche"
         android:textColor="@android:color/white" />
 
+    <Button
+        android:id="@+id/search_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/searchView"
+        android:layout_centerHorizontal="true"
+        android:text="@string/search_button_text"
+        android:onClick="onClick"
+        />
+
     <TextView
         android:id="@+id/invitationCinema"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/searchView"
+        android:layout_below="@id/search_button"
         android:text="@string/voir" />
 
     <WebView

@@ -22,8 +22,8 @@
         android:id="@+id/detailsBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/imageViewPoster"
-        android:layout_alignParentRight="true"
+        android:layout_below="@id/textViewTitle"
+        android:layout_alignParentLeft="true"
         android:text="@string/infos"
         android:onClick="details"
         />
