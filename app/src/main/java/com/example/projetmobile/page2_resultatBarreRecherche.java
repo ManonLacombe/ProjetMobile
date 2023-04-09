@@ -177,9 +177,16 @@ public class page2_resultatBarreRecherche extends AppCompatActivity {
                 for (int i = 0; i < jsorecherche.length(); i++){
                     Spanned title , posterUrl;
                     title = (Html.fromHtml(jsorecherche.getJSONObject(i).getString("#TITLE"), Html.FROM_HTML_MODE_LEGACY));
-                    posterUrl = (Html.fromHtml(jsorecherche.getJSONObject(i).getString("#IMG_POSTER"), Html.FROM_HTML_MODE_LEGACY));
-                    Movie movie = new Movie(title.toString(),posterUrl.toString());
-                    response.add(movie);
+                    if(jsorecherche.getJSONObject(i).has("#IMG_POSTER")&& !jsorecherche.getJSONObject(i).getString("#IMG_POSTER").isEmpty()){
+                        posterUrl = (Html.fromHtml(jsorecherche.getJSONObject(i).getString("#IMG_POSTER"), Html.FROM_HTML_MODE_LEGACY));
+                        Movie movie = new Movie(title.toString(),posterUrl.toString());
+                        response.add(movie);
+                    }else{
+                        String defaultImageName = getResources().getResourceName(R.drawable.default_image);
+                        posterUrl=Html.fromHtml(defaultImageName, Html.FROM_HTML_MODE_LEGACY);
+                        Movie movie = new Movie(title.toString(),posterUrl.toString());
+                        response.add(movie);
+                    }
                 }
             } else {
                 Log.e("ERROR","\n Code erreur retourné par le serveur : \n\n \t Code = " + jsocod + "\n\n \t Message : " + jso.getString("message"));
