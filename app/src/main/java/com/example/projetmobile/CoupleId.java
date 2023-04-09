@@ -1,9 +1,17 @@
 package com.example.projetmobile;
 
+/**
+ * This class defines the CoupleId object
+ */
 public class CoupleId {
     private String user;
     private String password;
 
+    /**
+     * Constructor
+     * @param user is the user
+     * @param password is the user's password
+     */
     public CoupleId (String user, String password){
         setUser(user);
         setPassword(password);

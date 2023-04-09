@@ -18,42 +18,64 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * this class allows custom visualization of large volume of data
+ */
 public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapter.SearchResultViewHolder> {
 
     private List<Movie> ListMovie;
 
+    /**
+     * Constructor
+     * @param data is a list of movies
+     */
     public SearchResultAdapter (List<Movie> data) {
         ListMovie = data;
     }
 
+    /**
+     * it is an asynchronous inner class.
+     * It describes the display of each of the elements to be displayed
+     * It allows to make the link between the textview defined by the layout
+     */
     public static class SearchResultViewHolder extends RecyclerView.ViewHolder {
         private final ImageView posterURL;
         private final TextView title;
 
         /**
-         * méthode qui permettra de faire le lien entre les données
-         * et les éléments graphiques du layout défini précédemment
-         * @param view
+         * this methode will make the link between the data
+         * and the graphic elements of the layout defined previously
+         * @param view is the view
          */
         public SearchResultViewHolder( View view) {
             super(view);
             posterURL = (ImageView)view.findViewById(R.id.imageViewPoster);
             title = (TextView)view.findViewById(R.id.textViewTitle);
         }
+
+        /**
+         * this method allows to obtain an image
+         * @return an ImageView containing the image
+         */
         public ImageView getImageViewPosterURL() {
             return posterURL;
         }
+
+        /**
+         * this method allows to obtain the title
+         * @return a TextView containing the title
+         */
         public TextView getTextViewTitle() {
             return title;
         }
     }
 
     /**
-     * Cette méthode fait le lien entre l’Adapter, le ViewHolder et le Layout
+     * This method makes the link between the Adapter, the ViewHolder and the Layout
      * @param parent   The ViewGroup into which the new View will be added after it is bound to
      *                 an adapter position.
      * @param viewType The view type of the new View.
-     * @return
+     * @return the data to diplay
      */
     @Override
     public SearchResultAdapter.SearchResultViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -62,8 +84,12 @@ public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapte
         return new SearchResultViewHolder(view);
     }
 
-    /*
-     * méthode qui permet de faire le lien entre vues et données
+
+    /**
+     * method that makes it possible to make the link between views and data
+     * @param holder   The ViewHolder which should be updated to represent the contents of the
+     *                 item at the given position in the data set.
+     * @param position The position of the item within the adapter's data set.
      */
     @Override
     public void onBindViewHolder(@NonNull SearchResultAdapter.SearchResultViewHolder holder, int position) {
@@ -75,25 +101,40 @@ public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapte
     }
 
     /**
-     * méthode qui retourne la taille du jeu
-     * de données défini en attribut de la classe.
-     * @return
+     * This method counts the number of items
+     * @return the size of the dataset defined as an attribute of the class
      */
     @Override
     public int getItemCount() {
         return ListMovie.size();
     }
 
+    /**
+     * it is an asynchronous inner class.
+     * it allows to load an image
+     */
     public class ChargementImage extends AsyncTask<Void, Void, Bitmap> {
 
         private String url;
         private ImageView imageView;
 
+        /**
+         * Constructor
+         * @param url is the url of the image
+         * @param imageView is the location to display the image
+         */
         public ChargementImage(String url, ImageView imageView) {
             this.url = url;
             this.imageView = imageView;
         }
 
+        /**
+         * this method defines the code to be executed as an asynchronous task.
+         * Here, establishing and processing the connection
+         * @param params params is void, which means there are no parameters specified
+         *               for this method and it takes no arguments when called
+         * @return a digital image composed of a matrix of dots (Bitmap)
+         */
         @Override
         protected Bitmap doInBackground(Void... params) {
             try {
@@ -111,14 +152,14 @@ public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapte
             return null;
         }
 
+        /**
+         * This method allows you to do post-processing on the result once the task is finished
+         * @param result is a bitmap
+         */
         @Override
         protected void onPostExecute(Bitmap result) {
             super.onPostExecute(result);
             imageView.setImageBitmap(result);
         }
-
     }
-
 }
-
-

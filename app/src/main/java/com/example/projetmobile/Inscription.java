@@ -16,7 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 /**
- * cette classe permet d'inscrire un utilisateur dans la base de données
+ * this class allows to register a user in the database
  */
 public class Inscription extends AppCompatActivity {
 
@@ -26,36 +26,34 @@ public class Inscription extends AppCompatActivity {
     DBHandler db;
 
     /**
-     * Cette méthode est appelée lors de la
-     * création de l’activité. Elle
-     * permet de faire le lien entre données et
-     * affichages. Elle instancie tous les
-     * objets et variables nécéssaires au
-     * fonctionnement de l’activité.
+     * This method is called when the activity is created.
+     * It allows to make the link between data and displays.
+     * It instantiates all the objects and variables necessary
+     * for the of the activity.
      *
-     * @param savedInstanceState
+     * @param savedInstanceState is the state of the saved instance
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inscription);
-        Toolbar myToolBar3 =(Toolbar) findViewById(R.id.my_toolbar3);
+        Toolbar myToolBar3 = (Toolbar) findViewById(R.id.my_toolbar3);
         setSupportActionBar(myToolBar3);
-        IntentConnexion=new Intent(Inscription.this,Connexion.class);
-        IntentInscription=new Intent(Inscription.this,Inscription.class);
+        IntentConnexion = new Intent(Inscription.this, Connexion.class);
+        IntentInscription = new Intent(Inscription.this, Inscription.class);
         db = new DBHandler(this);
-        User=(EditText) findViewById(R.id.User);
-        Mdp=(EditText) findViewById(R.id.Mdp);
+        User = (EditText) findViewById(R.id.User);
+        Mdp = (EditText) findViewById(R.id.Mdp);
     }
 
     /**
-     * Cette méthode fait le lien avec le layout
-     * utilisé pour le menu
-     * @param menu
-     * @return true si le lien avec le menu s'est bien fait
+     * This method makes the link with the layout used for the menu
+     *
+     * @param menu Specifies the menu file to be considered
+     * @return True if the link with the menu is well established
      */
     @Override
-    public boolean onCreateOptionsMenu(Menu menu){
+    public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.mymenu, menu);
@@ -63,14 +61,14 @@ public class Inscription extends AppCompatActivity {
     }
 
     /**
-     * cette méthode permet de rediriger vers une
-     * autre page selon l'item sélectionnée
-     * @param item est l'item du menu
-     * @return vrai si la redirection vers la page sélectionnée se passe bien
+     * This method allows redirecting to another page depending on the selected item
+     *
+     * @param item is the menu item
+     * @return True if the redirection to the selected page was successful
      */
     @Override
-    public boolean onOptionsItemSelected(MenuItem item){
-        switch(item.getItemId()){
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
             case R.id.connexion:
                 startActivity(IntentConnexion);
                 return (true);
@@ -82,17 +80,17 @@ public class Inscription extends AppCompatActivity {
     }
 
     /**
-     * 
-     * @param view
+     * This method allows to manage the event when clicking
+     *
+     * @param view is the view
      */
     public void add(View view) {
         //méthode appelée lors du clic sur le bouton valider
-        String user=User.getText().toString();
-        String mdp=Mdp.getText().toString();
-        if (user.isEmpty() || mdp.isEmpty()){
+        String user = User.getText().toString();
+        String mdp = Mdp.getText().toString();
+        if (user.isEmpty() || mdp.isEmpty()) {
             Toast.makeText(Inscription.this, "Identifiant ou mot de passe invalide", Toast.LENGTH_LONG).show();
-        }
-        else {
+        } else {
             try {
                 db.insertSession(user, mdp);
                 if (!user.isEmpty() && !mdp.isEmpty() && (db.selectByUser(user, mdp)).size() > 0) {
@@ -100,8 +98,7 @@ public class Inscription extends AppCompatActivity {
                 }
             } catch (SQLiteConstraintException e) {
                 Log.e("ERROR", "Cet utilisateur existe déjà");
-                // Capture de l'exception SQLiteConstraintException
-                //Toast.makeText(Inscription.this, "Cet utilisateur existe déjà.", Toast.LENGTH_LONG).show();
+                Toast.makeText(Inscription.this, "Cet utilisateur existe déjà.", Toast.LENGTH_LONG).show();
             }
         }
     }
@@ -117,6 +114,9 @@ public class Inscription extends AppCompatActivity {
         return exists;
     }*/
 
+    /**
+     * this method frees the resources used by the activity, when it is destroyed
+     */
     @Override
     protected void onDestroy() {
         super.onDestroy();

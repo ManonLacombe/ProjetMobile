@@ -78,6 +78,10 @@ public class Connexion extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * This method allows to manage the event when clicking
+     * @param view is the view
+     */
     public void connexion(View view) {
         //méthode appelée lors du clic sur le bouton valider
         if(view.getId()==R.id.validerCo) {

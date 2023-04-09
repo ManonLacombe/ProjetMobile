@@ -19,15 +19,15 @@ public class DBHandler extends SQLiteOpenHelper {
 
     /**
      * Constructor for DBHandler class
-     * @param context is 
+     * @param context is the concerned activity
      */
     public DBHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     /**
-     * cette méthode permet de créer la base de données
-     * @param db indique la base de donnée à prendre en compte
+     * This method allows to create the database
+     * @param db indicates the database to be considered
      */
     @Override
     public void onCreate(SQLiteDatabase db) {
@@ -39,10 +39,10 @@ public class DBHandler extends SQLiteOpenHelper {
     }
 
     /**
-     * cette méthode permet de supprimer une table si elle existe
-     * @param db indique la base de données à prendre en compte
-     * @param oldVersion indique l'ancienne version de la base de données
-     * @param newVersion indique la nouvelle version de la base de données
+     * this method allows to delete a table if it exists
+     * @param db indicates the database to be considered
+     * @param oldVersion indicates the old version of the database
+     * @param newVersion indicates the new version of the database
      */
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
@@ -52,9 +52,9 @@ public class DBHandler extends SQLiteOpenHelper {
     }
 
     /**
-     * cette méthode permet de créer une ligne et de l'insérer
-     * @param user indique le nom d'utilisateur
-     * @param password indique le mot de passe
+     * this method allows you to create a line and insert it
+     * @param user indicates the user name
+     * @param password indicates the password
      */
     public void insertSession(String user, String password){
         SQLiteDatabase db = this.getWritableDatabase();
@@ -65,6 +65,12 @@ public class DBHandler extends SQLiteOpenHelper {
         long newRowId=db.insert(DBContract.Form.TABLE_NAME, null, row);
     }
 
+    /**
+     * This method allows to select a CoupleId by his user name
+     * @param userDonner is the user name
+     * @param mdpDonner is the password
+     * @return a CoupleId in list form but there is only one
+     */
     public List<CoupleId> selectByUser(String userDonner, String mdpDonner) {
         SQLiteDatabase db = this.getReadableDatabase();
         String [] projection = {
