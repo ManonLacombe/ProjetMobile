@@ -39,6 +39,9 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 
+/**
+ * this class allows to generate a list of movies corresponding to the search
+ */
 public class page2_resultatBarreRecherche extends AppCompatActivity {
 
     Intent IntentConnexion;
@@ -52,9 +55,12 @@ public class page2_resultatBarreRecherche extends AppCompatActivity {
 
     ArrayList<Movie> finalResponse;
 
-    /*
-     * La méthode de base de création de l'activité
-     * @param savedInstanceState
+    /**
+     * This method is called when the activity is created. It makes the link
+     * between data and display. It instantiates all the objects and variables
+     * necessary for the running of the activity.
+     *
+     * @param savedInstanceState Refers to the saving of the state of the instance
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,6 +92,11 @@ public class page2_resultatBarreRecherche extends AppCompatActivity {
 
     }
 
+    /**
+     * This method makes the link with the layout used for the menu
+     * @param menu Specifies the menu file to be considered
+     * @return True if the link with the menu is well established
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         super.onCreateOptionsMenu(menu);
@@ -94,6 +105,11 @@ public class page2_resultatBarreRecherche extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * This method allows redirecting to another page depending on the selected item
+     * @param item is the menu item
+     * @return True if the redirection to the selected page was successful
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
         switch(item.getItemId()){
@@ -107,23 +123,27 @@ public class page2_resultatBarreRecherche extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * This method allows to manage the event when clicking
+     * @param v is the view
+     */
     public void retour(View v) {
         if(v.getId()==R.id.retourPagePrincipale){
             startActivity(IntentRetour);
         }
     }
 
-    /*
-     * La classe interne asynchrone permet la réalisation de la requête HTTP et le traitement des donénes reçues
-     * Prend en entrée un String qui est le titre de la recherche à générer.
-     * Retourne un ArrayList contenant la recherche et ces réponses.
+    /**
+     * The internal asynchronous class allows the realization of the HTTP request and the processing of the received data
+     * Takes as input a String which is the title of the search to be produced.
+     * Returns an ArrayList containing the search and these responses.
      */
     private class RequestTask extends AsyncTask<String, Void, ArrayList<Movie>> {
 
-        /*
-         * Lance la tâche asynchrone
-         * @param titre du film à générer
-         * @return un array list avec les titres et les réponses
+        /**
+         * this method launches the asynchronous task
+         * @param recherche is the title of the film to generate
+         * @return an array list with titles and the answers
          */
         @Override
         protected ArrayList<Movie> doInBackground(String... recherche) {
@@ -160,15 +180,13 @@ public class page2_resultatBarreRecherche extends AppCompatActivity {
             return response;
         }
 
-        //décodage du JSON et retourne la chaîne de caractère à afficher
-        /*
-         * Méthode qui décode l'objet JSON
-         * Extrait la recherche et les réponses et les ajoute à l'arrayList
-         * @param jso L'objet JSON
-         * @return ArrayList<Movie>
-         * @throws Exception
+        /**
+         * this method decodes the JSON object
+         * Extract search and answers and add them to the arrayList
+         * @param jso is the JSON object
+         * @return an ArrayList of movies
+         * @throws Exception is the exception thrown if the request returns an error code
          */
-
         private ArrayList<Movie> decodeJSON(JSONObject jso) throws Exception{
             ArrayList<Movie> response = new ArrayList<>();
             String jsocod = jso.getString("ok");
@@ -187,10 +205,10 @@ public class page2_resultatBarreRecherche extends AppCompatActivity {
             return response;
         }
 
-        /*
-         * Méthode qui va être appelée à la fin de la requête asynchrone.
-         * Génère les TextView et EditText sur la base des données reçues
-         * @param result
+        /**
+         * this method is called at the end of the asynchronous request
+         * Generates the TextView and EditText based on the received data
+         * @param result is the list of movies
          */
         protected void onPostExecute(ArrayList<Movie> result) {
             if (result.size()>1){
@@ -205,11 +223,11 @@ public class page2_resultatBarreRecherche extends AppCompatActivity {
         }
 
 
-        /*
-         * Génère un textview contenant un titre
-         * @param titre  le titre
-         * @param index l'id
-         * @param layout le layout dans lequel on va inclure ce textview
+        /**
+         * Generates a textview containing a title
+         * @param title is the title
+         * @param index is the id
+         * @param layout is the layout in which we will include this textView
          */
         private void generateTextViewTitle (String title, int index, LinearLayout layout){
             TextView t;
@@ -219,10 +237,10 @@ public class page2_resultatBarreRecherche extends AppCompatActivity {
             layout.addView(t);
         }
 
-        /*
-         * Génère une zone de texte dans laquel on affichera la réponse de la recherche (Image film)
-         * @param index l'id
-         * @param layout le layout dans lequel on veut inclure la zone
+        /**
+         * Generates a text box in which the search response will be displayed (Film image)
+         * @param i is the id
+         * @param layout the layout in which we want to include the zone
          */
         private void generateTextViewPostURL(String PostURL, int i, LinearLayout layout) {
             TextView t;
@@ -232,5 +250,4 @@ public class page2_resultatBarreRecherche extends AppCompatActivity {
             layout.addView(t);
         }
     }
-
 }

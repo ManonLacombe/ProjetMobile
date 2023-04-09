@@ -15,6 +15,9 @@ import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.EditText;
 
+/**
+ * this class is the same as "MainActivity" but for connected users
+ */
 public class MainActivityConnecter extends AppCompatActivity {
 
     Intent IntentRetour;
@@ -23,6 +26,14 @@ public class MainActivityConnecter extends AppCompatActivity {
     private EditText searchEditText;
     private Button searchButton;
     Intent intent;
+
+    /**
+     * This method is called when the activity is created. It makes the link
+     * between data and display. It instantiates all the objects and variables
+     * necessary for the running of the activity.
+     *
+     * @param savedInstanceState Refers to the saving of the state of the instance
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +52,10 @@ public class MainActivityConnecter extends AppCompatActivity {
 
     }
 
+    /**
+     * This method allows to manage the event when clicking
+     * @param v is the view
+     */
     public void onClick(View v) {
         // Code à exécuter lors du clic sur le bouton de recherche
         String searchTitle = searchEditText.getText().toString();
@@ -48,6 +63,11 @@ public class MainActivityConnecter extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /**
+     * This method makes the link with the layout used for the menu
+     * @param menu Specifies the menu file to be considered
+     * @return True if the link with the menu is well established
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         super.onCreateOptionsMenu(menu);
@@ -56,6 +76,11 @@ public class MainActivityConnecter extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * This method allows redirecting to another page depending on the selected item
+     * @param item is the menu item
+     * @return True if the redirection to the selected page was successful
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
         switch(item.getItemId()){
@@ -66,6 +91,9 @@ public class MainActivityConnecter extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * this method redefines the behavior of the return key for the WebView
+     */
     @Override
     public void onBackPressed() {
         if (web.canGoBack()) {
@@ -75,6 +103,9 @@ public class MainActivityConnecter extends AppCompatActivity {
         }
     }
 
+    /**
+     * this method allows you to register the receiver
+     */
     @Override
     public void onStart(){
         super.onStart();
@@ -82,6 +113,9 @@ public class MainActivityConnecter extends AppCompatActivity {
         registerReceiver(myReceiver, filter);
     }
 
+    /**
+     * this method allows you to unregister the receiver
+     */
     @Override
     public void onStop(){
         super.onStop();

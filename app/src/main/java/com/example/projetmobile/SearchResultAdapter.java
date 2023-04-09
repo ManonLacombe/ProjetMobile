@@ -31,9 +31,9 @@ public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapte
         private final TextView title;
 
         /**
-         * méthode qui permettra de faire le lien entre les données
-         * et les éléments graphiques du layout défini précédemment
-         * @param view
+         * this methode will make the link between the data
+         * and the graphic elements of the layout defined previously
+         * @param view is the view
          */
         public SearchResultViewHolder( View view) {
             super(view);
@@ -49,7 +49,7 @@ public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapte
     }
 
     /**
-     * Cette méthode fait le lien entre l’Adapter, le ViewHolder et le Layout
+     * This method makes the link between the Adapter, the ViewHolder and the Layout
      * @param parent   The ViewGroup into which the new View will be added after it is bound to
      *                 an adapter position.
      * @param viewType The view type of the new View.
@@ -62,8 +62,12 @@ public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapte
         return new SearchResultViewHolder(view);
     }
 
-    /*
-     * méthode qui permet de faire le lien entre vues et données
+
+    /**
+     * method that makes it possible to make the link between views and data
+     * @param holder   The ViewHolder which should be updated to represent the contents of the
+     *                 item at the given position in the data set.
+     * @param position The position of the item within the adapter's data set.
      */
     @Override
     public void onBindViewHolder(@NonNull SearchResultAdapter.SearchResultViewHolder holder, int position) {
@@ -75,25 +79,37 @@ public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapte
     }
 
     /**
-     * méthode qui retourne la taille du jeu
-     * de données défini en attribut de la classe.
-     * @return
+     * This method counts the number of items
+     * @return the size of the dataset defined as an attribute of the class
      */
     @Override
     public int getItemCount() {
         return ListMovie.size();
     }
 
+    /**
+     *
+     */
     public class ChargementImage extends AsyncTask<Void, Void, Bitmap> {
 
         private String url;
         private ImageView imageView;
 
+        /**
+         * Constructor
+         * @param url is the url of the image
+         * @param imageView is the location to display the image
+         */
         public ChargementImage(String url, ImageView imageView) {
             this.url = url;
             this.imageView = imageView;
         }
 
+        /**
+         *
+         * @param params
+         * @return
+         */
         @Override
         protected Bitmap doInBackground(Void... params) {
             try {
@@ -111,6 +127,10 @@ public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapte
             return null;
         }
 
+        /**
+         * 
+         * @param result
+         */
         @Override
         protected void onPostExecute(Bitmap result) {
             super.onPostExecute(result);
