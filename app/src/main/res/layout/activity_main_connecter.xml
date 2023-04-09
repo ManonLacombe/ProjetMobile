@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/fond_degrade_noir_rose"
     tools:context=".MainActivityConnecter">
 
     <androidx.appcompat.widget.Toolbar
@@ -12,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:layout_alignParentRight="true"
-        android:background="?attr/colorPrimary"
+        android:background="#2f282a"
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:popupTheme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
@@ -25,7 +26,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="24dp"
         android:text="@string/edt1"
-        android:textSize="24sp" />
+        android:textColor="#c59ca8"
+        android:textSize="30sp" />
 
     <EditText
         android:id="@+id/searchView"
@@ -34,10 +36,11 @@
         android:layout_below="@id/titre"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
-        android:background="@android:color/black"
+        android:textColor="@android:color/black"
+        android:background="@android:color/white"
         android:gravity="center"
         android:hint="@string/recherche"
-        android:textColor="@android:color/white" />
+         />
 
     <Button
         android:id="@+id/search_button"
@@ -53,7 +56,9 @@
         android:id="@+id/invitationCinema"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/search_button"
+        android:layout_below="@id/searchView"
+        android:textColor="#c59ca2"
+        android:textSize="20sp"
         android:text="@string/voir" />
 
     <WebView
