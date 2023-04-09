@@ -6,6 +6,7 @@
     tools:context=".MainActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/fond_degrade_noir_rose"
     android:orientation="vertical">
 
     <androidx.appcompat.widget.Toolbar
@@ -13,20 +14,23 @@
         android:id="@+id/my_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
+        android:background="#2f282a"
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:popupTheme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
     <TextView
         android:id="@+id/titre"
         android:text="@string/edt1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/my_toolbar"
-        android:layout_marginTop="24dp"
-        android:textSize="24sp" />
+        android:textColor="#c59ca8"
+        android:textSize="50sp" />
 
 
     <EditText
@@ -39,16 +43,22 @@
         android:layout_marginBottom="16dp"
         android:background="@android:color/white"
         android:textColor="@android:color/black"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:textSize="25sp"/>
 
     <Button
         android:id="@+id/search_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/searchView"
-        android:layout_centerHorizontal="true"
         android:text="@string/search_button_text"
         android:onClick="onClick"
+        android:textColor="#FFFFFF"
+        android:background="@color/my_custom_color"
+        android:layout_marginTop="16dp"
+        android:layout_centerHorizontal="true"
         />
+    </RelativeLayout>
+
 
 </RelativeLayout>
