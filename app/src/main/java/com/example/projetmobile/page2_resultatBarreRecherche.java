@@ -222,7 +222,6 @@ public class page2_resultatBarreRecherche extends AppCompatActivity {
             }
         }
 
-
         /**
          * Generates a textview containing a title
          * @param title is the title

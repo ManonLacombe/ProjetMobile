@@ -209,7 +209,6 @@ public class page2_resultatBarreRechercheConnecter extends AppCompatActivity {
             }
         }
 
-
         /**
          * Generates a textview containing a title
          * @param title is the title
@@ -237,6 +236,4 @@ public class page2_resultatBarreRechercheConnecter extends AppCompatActivity {
             layout.addView(t);
         }
     }
-
-
 }

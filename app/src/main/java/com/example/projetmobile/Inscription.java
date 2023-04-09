@@ -37,22 +37,23 @@ public class Inscription extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inscription);
-        Toolbar myToolBar3 =(Toolbar) findViewById(R.id.my_toolbar3);
+        Toolbar myToolBar3 = (Toolbar) findViewById(R.id.my_toolbar3);
         setSupportActionBar(myToolBar3);
-        IntentConnexion=new Intent(Inscription.this,Connexion.class);
-        IntentInscription=new Intent(Inscription.this,Inscription.class);
+        IntentConnexion = new Intent(Inscription.this, Connexion.class);
+        IntentInscription = new Intent(Inscription.this, Inscription.class);
         db = new DBHandler(this);
-        User=(EditText) findViewById(R.id.User);
-        Mdp=(EditText) findViewById(R.id.Mdp);
+        User = (EditText) findViewById(R.id.User);
+        Mdp = (EditText) findViewById(R.id.Mdp);
     }
 
     /**
      * This method makes the link with the layout used for the menu
+     *
      * @param menu Specifies the menu file to be considered
      * @return True if the link with the menu is well established
      */
     @Override
-    public boolean onCreateOptionsMenu(Menu menu){
+    public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.mymenu, menu);
@@ -61,12 +62,13 @@ public class Inscription extends AppCompatActivity {
 
     /**
      * This method allows redirecting to another page depending on the selected item
+     *
      * @param item is the menu item
      * @return True if the redirection to the selected page was successful
      */
     @Override
-    public boolean onOptionsItemSelected(MenuItem item){
-        switch(item.getItemId()){
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
             case R.id.connexion:
                 startActivity(IntentConnexion);
                 return (true);
@@ -79,16 +81,16 @@ public class Inscription extends AppCompatActivity {
 
     /**
      * This method allows to manage the event when clicking
+     *
      * @param view is the view
      */
     public void add(View view) {
         //méthode appelée lors du clic sur le bouton valider
-        String user=User.getText().toString();
-        String mdp=Mdp.getText().toString();
-        if (user.isEmpty() || mdp.isEmpty()){
+        String user = User.getText().toString();
+        String mdp = Mdp.getText().toString();
+        if (user.isEmpty() || mdp.isEmpty()) {
             Toast.makeText(Inscription.this, "Identifiant ou mot de passe invalide", Toast.LENGTH_LONG).show();
-        }
-        else {
+        } else {
             try {
                 db.insertSession(user, mdp);
                 if (!user.isEmpty() && !mdp.isEmpty() && (db.selectByUser(user, mdp)).size() > 0) {
@@ -96,8 +98,7 @@ public class Inscription extends AppCompatActivity {
                 }
             } catch (SQLiteConstraintException e) {
                 Log.e("ERROR", "Cet utilisateur existe déjà");
-                // Capture de l'exception SQLiteConstraintException
-                //Toast.makeText(Inscription.this, "Cet utilisateur existe déjà.", Toast.LENGTH_LONG).show();
+                Toast.makeText(Inscription.this, "Cet utilisateur existe déjà.", Toast.LENGTH_LONG).show();
             }
         }
     }
@@ -113,6 +114,9 @@ public class Inscription extends AppCompatActivity {
         return exists;
     }*/
 
+    /**
+     * this method frees the resources used by the activity, when it is destroyed
+     */
     @Override
     protected void onDestroy() {
         super.onDestroy();

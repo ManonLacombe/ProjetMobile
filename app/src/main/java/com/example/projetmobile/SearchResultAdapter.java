@@ -18,14 +18,26 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * this class allows custom visualization of large volume of data
+ */
 public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapter.SearchResultViewHolder> {
 
     private List<Movie> ListMovie;
 
+    /**
+     * Constructor
+     * @param data is a list of movies
+     */
     public SearchResultAdapter (List<Movie> data) {
         ListMovie = data;
     }
 
+    /**
+     * it is an asynchronous inner class.
+     * It describes the display of each of the elements to be displayed
+     * It allows to make the link between the textview defined by the layout
+     */
     public static class SearchResultViewHolder extends RecyclerView.ViewHolder {
         private final ImageView posterURL;
         private final TextView title;
@@ -40,9 +52,19 @@ public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapte
             posterURL = (ImageView)view.findViewById(R.id.imageViewPoster);
             title = (TextView)view.findViewById(R.id.textViewTitle);
         }
+
+        /**
+         * this method allows to obtain an image
+         * @return an ImageView containing the image
+         */
         public ImageView getImageViewPosterURL() {
             return posterURL;
         }
+
+        /**
+         * this method allows to obtain the title
+         * @return a TextView containing the title
+         */
         public TextView getTextViewTitle() {
             return title;
         }
@@ -53,7 +75,7 @@ public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapte
      * @param parent   The ViewGroup into which the new View will be added after it is bound to
      *                 an adapter position.
      * @param viewType The view type of the new View.
-     * @return
+     * @return the data to diplay
      */
     @Override
     public SearchResultAdapter.SearchResultViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -88,7 +110,8 @@ public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapte
     }
 
     /**
-     *
+     * it is an asynchronous inner class.
+     * it allows to load an image
      */
     public class ChargementImage extends AsyncTask<Void, Void, Bitmap> {
 
@@ -106,9 +129,11 @@ public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapte
         }
 
         /**
-         *
-         * @param params
-         * @return
+         * this method defines the code to be executed as an asynchronous task.
+         * Here, establishing and processing the connection
+         * @param params params is void, which means there are no parameters specified
+         *               for this method and it takes no arguments when called
+         * @return a digital image composed of a matrix of dots (Bitmap)
          */
         @Override
         protected Bitmap doInBackground(Void... params) {
@@ -128,17 +153,13 @@ public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapte
         }
 
         /**
-         *
-         * @param result
+         * This method allows you to do post-processing on the result once the task is finished
+         * @param result is a bitmap
          */
         @Override
         protected void onPostExecute(Bitmap result) {
             super.onPostExecute(result);
             imageView.setImageBitmap(result);
         }
-
     }
-
 }
-
-
