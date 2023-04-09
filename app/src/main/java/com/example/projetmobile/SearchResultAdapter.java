@@ -128,7 +128,7 @@ public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapte
         }
 
         /**
-         * 
+         *
          * @param result
          */
         @Override
