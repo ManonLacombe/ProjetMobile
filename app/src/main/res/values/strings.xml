@@ -1,8 +1,6 @@
 <resources>
     <string name="app_name">Films</string>
     <string name="edt1">CineInfo</string>
-    <!--<string name="submit1">Connexion</string>-->
-    <!--<string name="submit2">Inscription</string>-->
     <string name="recherche">recherche</string>
     <string name="connexion">Connexion</string>
     <string name="inscription">Inscription</string>
@@ -13,10 +11,8 @@
     <string name="deconnexion">Déconnexion</string>
     <string name="voir">"Films au cinéma en ce moment : "</string>
     <string name="search_button_text">Rechercher</string>
-    <string name="descriptifFilm">"Description film : "</string>
+    <!--<string name="descriptifFilm">"Description film : "</string>-->
     <string name="search_hint">RechercherTtitre</string>
     <string name="pagePrincipale">Page Principale</string>
-    <string name="infos">+ infos</string>
-
 
 </resources>
