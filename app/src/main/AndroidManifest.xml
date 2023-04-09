@@ -20,9 +20,6 @@
             android:name=".page2_resultatBarreRecherche"
             android:exported="false" />
         <activity
-            android:name=".page3_descriptif_film_methode"
-            android:exported="false" />
-        <activity
             android:name=".MainActivityConnecter"
             android:exported="false" />
         <activity

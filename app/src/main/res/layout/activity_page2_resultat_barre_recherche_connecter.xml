@@ -7,6 +7,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".page2_resultatBarreRechercheConnecter"
     android:orientation="vertical"
+    android:background="@drawable/fond_degrade_noir_rose"
     android:id="@+id/layoutPage2Recherche">
 
     <androidx.appcompat.widget.Toolbar
@@ -14,7 +15,7 @@
         android:id="@+id/my_toolbar5"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
+        android:background="#2f282a"
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:popupTheme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
@@ -32,7 +33,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/titreFilm" />
+            android:text="@string/titreFilm"
+            android:textColor="#c59ca8"
+            android:textSize="20sp"/>
 
         <Button
             android:id="@+id/retourPagePrincipale"
